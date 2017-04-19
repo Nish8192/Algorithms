@@ -53,8 +53,7 @@ function SLL(){
         return this;
     }
 }
-
 var List = new SLL();
-List.pushBack(-1).pushBack(-7).pushBack(5).pushBack(3).pushBack(-2).pushBack(-1).pushBack(6).pushBack(10).pushBack(-9);
-List.removeNeg();
-console.log(List.printList());
+// List.pushBack(-1).pushBack(-7).pushBack(5).pushBack(3).pushBack(-2).pushBack(-1).pushBack(6).pushBack(10).pushBack(-9);
+// List.removeNeg();
+// console.log(List.printList());
