@@ -1,7 +1,9 @@
-function generateArr(){
+function generateArr(length, lim){
     var arr = [];
-    for(let i = 0; i < 100; i++){
-        let rand = Math.floor(Math.random() * (10000 - 0 + 1)) + 0;
+    var length = length || 10;
+    var lim = lim || 100;
+    for(let i = 0; i < length; i++){
+        let rand = Math.floor(Math.random() * (lim - 0 + 1)) + 0;
         arr.push(rand);
     }
     return arr;
@@ -54,21 +56,65 @@ function selectionSort(arr){
     return arr;
 }
 function insertionSort(arr){
-    var temp;
-    for (var i = 1; i < arr.length; i++){
-        var idx = i;
-        temp = arr[i]
-        while(arr[i-1] < arr[i]){
+    for(var outer = 1; outer < arr.length; outer ++){
+        var idx = outer;
+        var temp = arr[outer];
+        while(temp < arr[idx - 1] && idx > 0){
+            arr[idx] = arr[idx - 1];
             idx--;
-            arr[i] = arr[i-1];
         }
         arr[idx] = temp;
     }
     return arr;
 }
+Array.prototype.insertAt = function(i, val){
+    for(var x = this.length; x >= i; x--){
+        this[x] = this[x-1];
+    }
+    this[i] = val;
+    return this;
+}
+
+//Arrays must be sorted before combining
+function combineArr(a1, a2){
+    var result = [], x = 0, y = 0;
+    while(a1[x]){
+        while(a2[y]){
+            if(!a1[x]){
+                break;
+            }
+            while(a1[x] <= a2[y] && !(a1[x] > a2[y+1])){
+                result.push(a1[x]);
+                x++;
+            }
+            while(a2[y] <= a1[x] && !(a2[y] > a1[x+1])){
+                result.push(a2[y]);
+                y++
+            }
+        }
+        if(a1[x]){
+            result.push(a1[x]);
+            x++;
+        }
+    }
+    for(var i = y; y < a2.length; y++){
+        result.push(a2[y]);
+    }
+    return result;
+}
+
 var arr = generateArr();
-var str = 0100011001010101010000110100101101011001010011110101010100100001
-console.log(parseInt(str,2).toString(10));
+
 // console.log(arr);
 // console.log(bubbleSort2(arr))
 // console.log(selectionSort(arr));
+// console.log(insertionSort(arr));
+
+// var a1 = [6,14,17,20], a2 = [2,13,14,15,19];
+var a1 = generateArr(), a2 = generateArr();
+
+a1 = insertionSort(a1);
+a2 = insertionSort(a2);
+result = combineArr(a1, a2);
+
+console.log(result, result.length);

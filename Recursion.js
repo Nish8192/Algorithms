@@ -103,4 +103,4 @@ var canvas = [ [3,2,3,4,3],
                 [7,3,3,5,3],
                 [6,5,3,4,1],
                 [1,2,3,3,3]]
-    console.log(rFloodFill(canvas, [2,2], 1));
+console.log(rFloodFill(canvas, [2,2], 1));
