@@ -1,9 +1,9 @@
 function findPrimes(num){
-	if(num <2){
+	if(num < 2){
 		return [];
 	}
 	var array = [2];
-	for(var i = 3; i <= num; i = i+2){
+	for(var i = 3; i <= num; i += 2){
 		var is_prime = true;
 		for(var j = 0; j < array.length; j++){
 			if(i % array[j] == 0){
@@ -18,4 +18,4 @@ function findPrimes(num){
 	return array;
 }
 
-console.log(findPrimes(100));
+console.log(findPrimes(10000));

@@ -5,9 +5,9 @@
 
 
 function ReverseInt(num){
-    var num = num + "";
-    var arr = num.split("");
-    var arr2 = [];
+    var num = num + "",
+        arr = num.split(""),
+        arr2 = [];
     if(arr[0] === "-"){
         var i = 1;
         arr2.push(arr[0]);
@@ -27,4 +27,3 @@ function ReverseInt(num){
     return parseInt(result);
 }
 console.log(ReverseInt(-123));
-console.log(typeof(ReverseInt(-123)));
