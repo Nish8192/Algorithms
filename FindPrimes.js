@@ -18,4 +18,6 @@ function findPrimes(num){
 	return array;
 }
 
-console.log(findPrimes(10000));
+var result = findPrimes(1000000);
+
+console.log(result);

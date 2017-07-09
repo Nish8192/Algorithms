@@ -10,4 +10,5 @@ function isPrime(num){
     return true;
 }
 
-console.log(isPrime(99));
+//returns true
+console.log(isPrime(997247));
